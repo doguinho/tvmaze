@@ -7,26 +7,15 @@ class SeriesView {
     }
     template(model) {
         return `
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                </tr>
-            </thead>
-
-            <tbody>
                 ${model.paraArray().map(serie => `
-                        <tr>
-                            <td>${serie.id}</td>
-                            <td>${serie.nome}</td>
-                        <tr>
+                    <div class="box-serie">
+                        <h1 class="subtitle">
+                            <a href="#${serie.id}">${serie.nome}</a>
+                        </h1>                        
+                        <img src="${serie.imgM}"/>
+                    </div>
                      `).join('')}            
-            </tbody>
-
-            <tfoot>
-            </tfoot>
-        </table> 
+            
         `;
     }
 }

@@ -4,7 +4,7 @@ class SerieController {
         this._seriesView = new SeriesView('#catalogo');
     }
     buscarDados() {
-        let url = 'data/robots.json';
+        const url = 'data/robots.json';
         fetch(url)
             .then(response => response.json())
             .then(result => {
@@ -16,11 +16,13 @@ class SerieController {
     }
     criarListaDados(dados) {
         for (const dado of dados) {
-            const serie = new Serie(dado.show.id, dado.show.name);
+            if (dado.show.image === null) {
+                continue;
+            }
+            const serie = new Serie(dado.show.id, dado.show.name, dado.show.image.medium, dado.show.image.original, dado.show.image.genre);
             this._series.adiciona(serie);
             this._seriesView.update(this._series);
         }
-        console.log(this._series.paraArray());
     }
     get dados() {
         return this._dados;

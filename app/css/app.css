@@ -1,0 +1,6 @@
+#catalogo {
+    display: flex; flex-wrap: wrap;
+}
+.box-serie{
+    max-width:300px;padding-right:50px;padding-bottom:20px;
+}

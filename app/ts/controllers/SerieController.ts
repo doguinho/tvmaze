@@ -9,7 +9,7 @@ class SerieController {
 
     buscarDados() {
 
-        let url = 'data/robots.json';
+        const url = 'data/robots.json';
 
         fetch(url)
         .then(response => response.json()) 
@@ -23,16 +23,23 @@ class SerieController {
     }
 
     criarListaDados(dados){
+        
         for (const dado of dados) {
+            if (dado.show.image === null) { continue; }
 
-            const serie = new Serie(dado.show.id,dado.show.name);
+            const serie = new Serie(
+                dado.show.id,
+                dado.show.name,
+                dado.show.image.medium,
+                dado.show.image.original,
+                dado.show.image.genre
+                );
 
             this._series.adiciona(serie);
 
             this._seriesView.update(this._series);
 
-        }
-        console.log(this._series.paraArray());
+        }        
         
     }
 
