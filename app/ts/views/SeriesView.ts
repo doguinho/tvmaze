@@ -39,7 +39,7 @@ class SeriesView {
                     <div class="box-serie" data-serie-id="${serie.id}">
                         <h1 class="subtitle">
                             <a href="#">${serie.nome}<br/>
-                            <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '<br/>'}</small>
+                            <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '...<br/>'}</small>
                             </a>
                         </h1>                                                
                         <a href="#"><img src="${serie.imgM}"/></a>
