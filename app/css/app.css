@@ -2,5 +2,54 @@
     display: flex; flex-wrap: wrap;
 }
 .box-serie{
-    max-width:300px;padding-right:50px;padding-bottom:20px;
+    max-width:300px;
+    padding-right:50px;
+    padding-bottom:30px;
+}
+#serie-detalhes .photo {
+    width: 50%;
+    padding: 1em;
+}
+#serie-detalhes .summary {
+    width: 50%;
+    padding: 1em;
+}
+#serie-detalhes .detalhes{
+    display: flex
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 210px;
+    }
+    .box-serie {
+        padding-right: 0
+    }
+    #serie-detalhes .photo {
+        width: 100%;
+        text-align: center;
+        padding:0
+    }
+    #serie-detalhes .summary {
+        width: 100%;
+    }
+    #serie-detalhes .detalhes{
+        display: block;
+        width: 80%;
+        margin: auto;
+    }
+} 
+@media only screen and (min-width: 600px) {
+    .container{
+        width: 520px;
+    }
+}
+@media only screen and (min-width: 800px) {
+    .container{
+        width: 780px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .container{
+        width: 100%;
+    }
 }

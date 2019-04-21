@@ -19,12 +19,9 @@ class SerieController {
             if (dado.show.image === null) {
                 continue;
             }
-            const serie = new Serie(dado.show.id, dado.show.name, dado.show.image.medium, dado.show.image.original, dado.show.image.genre);
+            const serie = new Serie(dado.show.id, dado.show.name, dado.show.image.medium, dado.show.image.original, dado.show.genres, dado.show.rating.average != null ? dado.show.rating.average : 0, dado.show.summary, dado.show.language, dado.show.premiered);
             this._series.adiciona(serie);
             this._seriesView.update(this._series);
         }
-    }
-    get dados() {
-        return this._dados;
     }
 }

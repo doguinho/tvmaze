@@ -1,6 +1,5 @@
 class SerieController {
 
-    private _dados;
     private _series = new Series();
     private _seriesView = new SeriesView('#catalogo');
 
@@ -25,6 +24,7 @@ class SerieController {
     criarListaDados(dados){
         
         for (const dado of dados) {
+
             if (dado.show.image === null) { continue; }
 
             const serie = new Serie(
@@ -32,7 +32,11 @@ class SerieController {
                 dado.show.name,
                 dado.show.image.medium,
                 dado.show.image.original,
-                dado.show.image.genre
+                dado.show.genres,
+                dado.show.rating.average != null ? dado.show.rating.average : 0,
+                dado.show.summary,
+                dado.show.language,
+                dado.show.premiered
                 );
 
             this._series.adiciona(serie);
@@ -43,8 +47,5 @@ class SerieController {
         
     }
 
-    public get dados() {
-        return this._dados;
-    }
 
 }
