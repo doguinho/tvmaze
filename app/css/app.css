@@ -6,9 +6,14 @@
     padding-right:50px;
     padding-bottom:30px;
 }
+.box-serie img {
+    -webkit-box-shadow: 9px 10px 17px -5px rgba(0,0,0,0.41);
+    -moz-box-shadow: 9px 10px 17px -5px rgba(0,0,0,0.41);
+    box-shadow: 9px 10px 17px -5px rgba(0,0,0,0.41);
+}
 #serie-detalhes .photo {
     width: 50%;
-    padding: 1em;
+    padding: 1em;    
 }
 #serie-detalhes .summary {
     width: 50%;
