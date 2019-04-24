@@ -22,6 +22,10 @@
 #serie-detalhes .detalhes{
     display: flex
 }
+.modal-background {
+    background-color: rgba(10, 10, 10, 0.96)
+}
+
 @media only screen and (max-width: 600px) {
     .container{
         width: 210px;
