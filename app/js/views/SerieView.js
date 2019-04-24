@@ -4,6 +4,13 @@ class SerieView {
     }
     update(model) {
         this._elemento.innerHTML = this.template(model);
+        const sc = new SerieController();
+        sc.testaBtnFav(model);
+        const favBtn = this._elemento.querySelector('#favBtn');
+        favBtn.addEventListener('click', function () {
+            const sc = new SerieController();
+            sc.adicionaFavoritos(model);
+        });
     }
     template(model) {
         return `
@@ -27,6 +34,13 @@ class SerieView {
                     Lançamento: ${model.release}
                 </small>
             </h2>
+            <p class="buttons">
+            <a class="button is-medium" id="favBtn">
+                <span class="icon is-medium">
+                <i class="far fa-heart"></i>
+                </span>
+            </a>
+            </p>
             <p>${model.summary}</p>
             </div>
         </div>

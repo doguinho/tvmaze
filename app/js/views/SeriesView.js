@@ -15,7 +15,6 @@ class SeriesView {
                         serieView.update(m);
                     }
                 }
-                //const serie = new Serie(1,'robot','x','x',['dra'],2,'ssss','a','2019');
             });
         }
         serieDetalhes.querySelector('.modal-close').addEventListener('click', function () {

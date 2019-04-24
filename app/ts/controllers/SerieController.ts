@@ -2,6 +2,7 @@ class SerieController {
 
     private _series = new Series();
     private _seriesView = new SeriesView('#catalogo');
+    private _seriesViewFav = new SeriesView('#favoritos');
 
     constructor(
     ) { }
@@ -38,14 +39,69 @@ class SerieController {
                 dado.show.rating.average != null ? dado.show.rating.average : 0,
                 dado.show.summary,
                 dado.show.language,
-                release.toLocaleDateString();
+                release.toLocaleDateString()
                 );
 
             this._series.adiciona(serie);
 
-            this._seriesView.update(this._series);
-
         }        
+
+        this._seriesView.update(this._series);
+
+        this.listarFavoritos();
+        
+    }
+
+    testaBtnFav(serie:Serie){
+
+        let listaFav = JSON.parse(localStorage.getItem("listaFav"));
+
+        const favExistente = listaFav.indexOf(serie.id);
+
+        if (favExistente < 0) { 
+            document.querySelector("#favBtn").classList.add('is-success');
+         } else { 
+            document.querySelector("#favBtn").classList.remove('is-success');
+        }
+
+    }
+
+    adicionaFavoritos(serie:Serie) {
+
+        let listaFav = JSON.parse(localStorage.getItem("listaFav"));
+
+        if (listaFav == null) {
+            listaFav = [];
+        }
+
+        const favExistente = listaFav.indexOf(serie.id);
+
+        if (favExistente < 0) { 
+            listaFav.push(serie.id);
+         } else { 
+             listaFav.splice(favExistente,1);
+        }
+        
+        localStorage.setItem("listaFav", JSON.stringify(listaFav));
+
+        this.testaBtnFav(serie);
+
+    }
+
+    listarFavoritos(){
+
+        let favoritos = new Series();
+        let listaFav = JSON.parse(localStorage.getItem("listaFav"));
+
+        for (const serie of this._series.paraArray()) {
+
+            const favExistente = listaFav.indexOf(serie.id);
+
+            if (favExistente < 0) { favoritos.adiciona(serie) } ;
+            
+        }
+
+        this._seriesViewFav.update(favoritos);
         
     }
 
