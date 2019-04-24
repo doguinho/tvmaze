@@ -27,6 +27,8 @@ class SerieController {
 
             if (dado.show.image === null) { continue; }
 
+            const release = new Date(dado.show.premiered);
+
             const serie = new Serie(
                 dado.show.id,
                 dado.show.name,
@@ -36,7 +38,7 @@ class SerieController {
                 dado.show.rating.average != null ? dado.show.rating.average : 0,
                 dado.show.summary,
                 dado.show.language,
-                dado.show.premiered
+                release.toLocaleDateString();
                 );
 
             this._series.adiciona(serie);
