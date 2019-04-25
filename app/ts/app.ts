@@ -34,3 +34,21 @@ btnLimpar.addEventListener('click', function() {
     btnLimpar.classList.add('is-hidden');
 
 });
+
+var url_string = window.location.href;
+var url = new URL(url_string);
+
+const termoBusca = url.searchParams.get("q");
+
+if (termoBusca != null) {
+
+    busca.buscarDados('data/zombie.json').then(function (data) {
+
+        busca.exibirBusca(data, termoBusca);
+        btnProcurar.classList.add('is-hidden');
+        btnLimpar.classList.remove('is-hidden');
+
+    });        
+}
+
+
