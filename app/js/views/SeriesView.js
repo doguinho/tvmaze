@@ -1,6 +1,7 @@
 class SeriesView {
-    constructor(seletor) {
+    constructor(seletor, titulo) {
         this._elemento = document.querySelector(seletor);
+        this._titulo = titulo;
     }
     update(model) {
         this._elemento.innerHTML = this.template(model);
@@ -17,23 +18,23 @@ class SeriesView {
                 }
             });
         }
-        serieDetalhes.querySelector('.modal-close').addEventListener('click', function () {
-            serieDetalhes.classList.remove('is-active');
-        });
     }
     template(model) {
+        console.log(model.paraArray().length);
         return `
-                ${model.paraArray().map(serie => `
-                    <div class="box-serie" data-serie-id="${serie.id}">
-                        <h1 class="subtitle">
-                            <a href="#">${serie.nome}<br/>
-                            <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '...<br/>'}</small>
-                            </a>
-                        </h1>                                                
-                        <a href="#"><img src="${serie.imgM}"/></a>
-                    </div>
-                     `).join('')}            
-            
+                <h1 class="title">${model.paraArray().length > 0 ? this._titulo : ''}</h1>
+                <div class="lista">
+                    ${model.paraArray().map(serie => `
+                        <div class="box-serie" data-serie-id="${serie.id}">
+                            <h1 class="subtitle">
+                                <a href="#">${serie.nome}<br/>
+                                <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '...<br/>'}</small>
+                                </a>
+                            </h1>                                                
+                            <a href="#"><img src="${serie.imgM}"/></a>
+                        </div>
+                        `).join('')}            
+                </div>
         `;
     }
 }

@@ -1,10 +1,13 @@
 class SeriesView {
 
     private _elemento: Element;
+    private _titulo:string;
 
-    constructor(seletor: string) {
+    constructor(seletor: string,titulo:string) {
 
         this._elemento = document.querySelector(seletor);
+        this._titulo = titulo;
+        
     }
 
     update(model: Series): void {
@@ -22,29 +25,29 @@ class SeriesView {
                     }
                 }
             });    
-        }
-        serieDetalhes.querySelector('.modal-close').addEventListener('click',function(){
-            serieDetalhes.classList.remove('is-active');
-        });
-        
+        }        
+       
     }
 
     template(model: Series): string {
+        console.log(model.paraArray().length);
         
         return `
-                ${model.paraArray().map(serie => 
-                     `
-                    <div class="box-serie" data-serie-id="${serie.id}">
-                        <h1 class="subtitle">
-                            <a href="#">${serie.nome}<br/>
-                            <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '...<br/>'}</small>
-                            </a>
-                        </h1>                                                
-                        <a href="#"><img src="${serie.imgM}"/></a>
-                    </div>
-                     `   
-                ).join('')}            
-            
+                <h1 class="title">${model.paraArray().length > 0 ? this._titulo : ''}</h1>
+                <div class="lista">
+                    ${model.paraArray().map(serie => 
+                        `
+                        <div class="box-serie" data-serie-id="${serie.id}">
+                            <h1 class="subtitle">
+                                <a href="#">${serie.nome}<br/>
+                                <small class="has-text-grey-light">${serie.genero.length > 0 ? serie.genero : '...<br/>'}</small>
+                                </a>
+                            </h1>                                                
+                            <a href="#"><img src="${serie.imgM}"/></a>
+                        </div>
+                        `   
+                    ).join('')}            
+                </div>
         `;
     }
 

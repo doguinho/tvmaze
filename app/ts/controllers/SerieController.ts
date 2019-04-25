@@ -1,8 +1,8 @@
 class SerieController {
 
     private _series = new Series();
-    private _seriesView = new SeriesView('#catalogo');
-    private _seriesViewFav = new SeriesView('#favoritos');
+    private _seriesView = new SeriesView('#catalogo','Series');
+    private _seriesViewFav = new SeriesView('#favoritos','Favoritos');
 
     constructor(
     ) { }
@@ -56,12 +56,16 @@ class SerieController {
 
         let listaFav = JSON.parse(localStorage.getItem("listaFav"));
 
-        const favExistente = listaFav.indexOf(serie.id);
+        if (listaFav != null) {
 
-        if (favExistente < 0) { 
-            document.querySelector("#favBtn").classList.add('is-success');
-         } else { 
-            document.querySelector("#favBtn").classList.remove('is-success');
+            const favExistente = listaFav.indexOf(serie.id);
+
+            if (favExistente >= 0) { 
+                document.querySelector("#favBtn").classList.add('is-success');
+            } else { 
+                document.querySelector("#favBtn").classList.remove('is-success');
+            }
+
         }
 
     }
@@ -89,19 +93,24 @@ class SerieController {
     }
 
     listarFavoritos(){
+        
+        if (localStorage.getItem("listaFav") !== null) {
 
-        let favoritos = new Series();
-        let listaFav = JSON.parse(localStorage.getItem("listaFav"));
+            let favoritos = new Series();
 
-        for (const serie of this._series.paraArray()) {
+            let listaFav = JSON.parse(localStorage.getItem("listaFav"));
 
-            const favExistente = listaFav.indexOf(serie.id);
+            for (const serie of this._series.paraArray()) {
 
-            if (favExistente < 0) { favoritos.adiciona(serie) } ;
-            
+                const favExistente = listaFav.indexOf(serie.id);
+
+                if (favExistente >= 0) { favoritos.adiciona(serie) } ;
+                
+            }
+
+            this._seriesViewFav.update(favoritos);
+
         }
-
-        this._seriesViewFav.update(favoritos);
         
     }
 

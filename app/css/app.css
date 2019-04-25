@@ -1,5 +1,6 @@
-#catalogo,#favoritos {
-    display: flex; flex-wrap: wrap;
+#catalogo .lista,#favoritos .lista{
+    display: flex; 
+    flex-wrap: wrap;
 }
 .box-serie{
     max-width:300px;

@@ -1,8 +1,8 @@
 class SerieController {
     constructor() {
         this._series = new Series();
-        this._seriesView = new SeriesView('#catalogo');
-        this._seriesViewFav = new SeriesView('#favoritos');
+        this._seriesView = new SeriesView('#catalogo', 'Series');
+        this._seriesViewFav = new SeriesView('#favoritos', 'Favoritos');
     }
     buscarDados() {
         const url = 'data/robots.json';
@@ -29,12 +29,14 @@ class SerieController {
     }
     testaBtnFav(serie) {
         let listaFav = JSON.parse(localStorage.getItem("listaFav"));
-        const favExistente = listaFav.indexOf(serie.id);
-        if (favExistente < 0) {
-            document.querySelector("#favBtn").classList.add('is-success');
-        }
-        else {
-            document.querySelector("#favBtn").classList.remove('is-success');
+        if (listaFav != null) {
+            const favExistente = listaFav.indexOf(serie.id);
+            if (favExistente >= 0) {
+                document.querySelector("#favBtn").classList.add('is-success');
+            }
+            else {
+                document.querySelector("#favBtn").classList.remove('is-success');
+            }
         }
     }
     adicionaFavoritos(serie) {
@@ -53,15 +55,17 @@ class SerieController {
         this.testaBtnFav(serie);
     }
     listarFavoritos() {
-        let favoritos = new Series();
-        let listaFav = JSON.parse(localStorage.getItem("listaFav"));
-        for (const serie of this._series.paraArray()) {
-            const favExistente = listaFav.indexOf(serie.id);
-            if (favExistente < 0) {
-                favoritos.adiciona(serie);
+        if (localStorage.getItem("listaFav") !== null) {
+            let favoritos = new Series();
+            let listaFav = JSON.parse(localStorage.getItem("listaFav"));
+            for (const serie of this._series.paraArray()) {
+                const favExistente = listaFav.indexOf(serie.id);
+                if (favExistente >= 0) {
+                    favoritos.adiciona(serie);
+                }
+                ;
             }
-            ;
+            this._seriesViewFav.update(favoritos);
         }
-        this._seriesViewFav.update(favoritos);
     }
 }
