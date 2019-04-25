@@ -20,7 +20,6 @@ class SeriesView {
         }
     }
     template(model) {
-        console.log(model.paraArray().length);
         return `
                 <h1 class="title">${model.paraArray().length > 0 ? this._titulo : ''}</h1>
                 <div class="lista">
