@@ -29,6 +29,18 @@ class SeriesView {
        
     }
 
+    limpar(){
+        this._elemento.innerHTML = '';
+    }
+
+    esconder() {
+        this._elemento.classList.add('is-hidden');
+    }
+
+    mostrar() {
+        this._elemento.classList.remove('is-hidden');
+    }
+
     template(model: Series): string {
         
         return `

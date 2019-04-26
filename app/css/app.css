@@ -1,4 +1,4 @@
-#catalogo .lista,#favoritos .lista{
+#catalogo .lista,#favoritos .lista,#busca .lista{
     display: flex; 
     flex-wrap: wrap;
 }

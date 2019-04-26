@@ -19,6 +19,15 @@ class SeriesView {
             });
         }
     }
+    limpar() {
+        this._elemento.innerHTML = '';
+    }
+    esconder() {
+        this._elemento.classList.add('is-hidden');
+    }
+    mostrar() {
+        this._elemento.classList.remove('is-hidden');
+    }
     template(model) {
         return `
                 <h1 class="title">${model.paraArray().length > 0 ? this._titulo : ''}</h1>
