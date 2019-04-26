@@ -56,8 +56,6 @@ class SerieController {
         this._seriesView.esconder();
         this._seriesViewFav.esconder();
         
-       // console.log(this._series);
-        
 
     }
 
@@ -157,30 +155,5 @@ class SerieController {
         }
         
     }
-
-    listarBusca(valor:string) {
-
-        this.buscarDados('data/zombie.json');
-
-
-
-//            let busca = new Series();
-
-/*
-            let listaFav = JSON.parse(localStorage.getItem("listaFav"));
-
-            for (const serie of this._series.paraArray()) {
-
-                const favExistente = listaFav.indexOf(serie.id);
-
-                if (favExistente >= 0) { favoritos.adiciona(serie) };
-
-            }
-
-            this._seriesViewFav.update(favoritos);
-
-*/
-    }
-
 
 }
