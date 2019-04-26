@@ -60,6 +60,9 @@
     #procurar-wrap{
         flex-grow: unset;
     }
+    #logo {
+        margin-right: 30px
+    }
 } 
 @media only screen and (min-width: 600px) {
     .container{
@@ -68,14 +71,23 @@
     #procurar-wrap{
         flex-grow: unset;
     }
+    #logo {
+        margin-right: 30px
+    }
 }
 @media only screen and (min-width: 800px) {
     .container{
         width: 780px;
     }
+    #logo {
+        margin-right: 130px
+    }
 }
 @media only screen and (min-width: 1200px) {
     .container{
         width: 100%;
+    }
+    #logo {
+        margin-right: 130px
     }
 }
