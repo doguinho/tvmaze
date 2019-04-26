@@ -5,27 +5,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TvMaze</title>
+  <link rel="icon" href="img/favicon-16x16.png" />
   <link rel="stylesheet" href="css/bulma.css">
   <link rel="stylesheet" href="css/app.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
   <section class="hero is-primary is-bold">
+
     <div class="hero-body">
-      <div class="container" style="display:flex;flex-grow: 1;">
-        <div style="width: 70%">
-          <h1 class="title has-text-white is-size-1 is-bold">TvMaze</h1>
+
+      <div class="container flex-container">
+          
+          <div id="logo">
+              <img src="img/apple-touch-icon-180x180.png" />
+          </div>
+
+        <div id="procurar-wrap">
+
+          <div class="field has-addons" style="display:inline-flex">
+            <div class="control">
+              <input id="inputProcurar" class="input" type="text" placeholder="Ex.: Zombie">
+            </div>
+            <div class="control">
+              <a class="button is-info" id="btnProcurar">Procurar</a>
+              <a class="button is-info is-hidden" id="btnLimpar">Limpar</a>
+            </div>
+          </div>
+
         </div>
-        <div class="field has-addons" style="width: 30%;">
-          <div class="control">
-            <input id="inputProcurar" class="input" type="text" placeholder="Ex.: Zombie">
-          </div>
-          <div class="control">
-            <a class="button is-info" id="btnProcurar">Procurar</a>
-            <a class="button is-info is-hidden" id="btnLimpar">Limpar</a>
-          </div>
-        </div>      
+
       </div>
     </div>
   </section>
@@ -36,7 +45,7 @@
       <div id="busca"></div>
 
       <div id="favoritos"></div>
-      
+
       <div id="catalogo"></div>
 
       <div class="modal" id="serie-detalhes">

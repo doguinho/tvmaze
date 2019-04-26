@@ -26,7 +26,17 @@
 .modal-background {
     background-color: rgba(10, 10, 10, 0.96)
 }
-
+.flex-container {
+    display:flex;
+    flex-grow: 1;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+#procurar-wrap{
+    flex-grow: 1;
+    text-align: right
+}
 @media only screen and (max-width: 600px) {
     .container{
         width: 210px;
@@ -47,19 +57,37 @@
         width: 80%;
         margin: auto;
     }
+    #procurar-wrap{
+        flex-grow: unset;
+    }
+    #logo {
+        margin-right: 30px
+    }
 } 
 @media only screen and (min-width: 600px) {
     .container{
         width: 520px;
+    }
+    #procurar-wrap{
+        flex-grow: unset;
+    }
+    #logo {
+        margin-right: 30px
     }
 }
 @media only screen and (min-width: 800px) {
     .container{
         width: 780px;
     }
+    #logo {
+        margin-right: 130px
+    }
 }
 @media only screen and (min-width: 1200px) {
     .container{
         width: 100%;
+    }
+    #logo {
+        margin-right: 130px
     }
 }
